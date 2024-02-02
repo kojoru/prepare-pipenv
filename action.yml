@@ -1,5 +1,5 @@
-name: Pipenv sync
-description: This action prepares a Python environment using Pipenv, including installation of the right python version and syncing the Pipfile.lock.
+name: Prepare Pipenv environment
+description: This action prepares a Python environment using Pipenv, including installation of Python and dependencies
 
 inputs:
   python-version:
