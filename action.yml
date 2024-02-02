@@ -3,17 +3,25 @@ description: Install Python, pipenv and Pipfile packages
 
 inputs:
   python-version:
-    description: The version of Python to use
-    required: true
+    description: The version of Python to use. Overrides the value in the Pipfile.
+    required: false
+outputs:
+  python-version:
+    description: The version of Python that was used
+    value: ${{ steps.detect-python.outputs.python-version }}
 
 runs:
   using: "composite"
   steps:
+    - id: detect-python
+      name: Detect Python
+      run: detect-python.bash
+      shell: bash
     - id: setup-python
       name: Setup Python
       uses: actions/setup-python@v4
       with:
-        python-version: ${{ inputs.python-version }}
+        python-version: ${{ steps.detect-python.outputs.python-version }}
         cache: 'pipenv'
 
     - id: install-pipenv
@@ -23,5 +31,5 @@ runs:
 
     - id: sync-pipfile
       name: Sync Pipfile
-      run: pipenv sync --dev --python ${{ inputs.python-version }}
+      run: pipenv sync --dev --python ${{ steps.detect-python.outputs.python-version }}
       shell: bash
