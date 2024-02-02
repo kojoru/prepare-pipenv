@@ -1,5 +1,8 @@
 name: Prepare Pipenv environment
 description: This action prepares a Python environment using Pipenv, including installation of Python and dependencies
+branding:
+  icon: sunrise
+  color: yellow
 
 inputs:
   python-version:
