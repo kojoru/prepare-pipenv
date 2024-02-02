@@ -2,6 +2,8 @@
 
 WORKING_DIR="$1"
 echo "Working directory: $WORKING_DIR"
+cd $WORKING_DIR
+
 REQUESTED_PYTHON_VERSION="$2"
 PYTHON_FULL_VERSION_PIPFILE=$(yq eval '.requires.python_full_version // ""' Pipfile --input-format toml --output-format csv 2>/dev/null || echo "")
 PYTHON_VERSION_PIPFILE=$(yq eval '.requires.python_version // ""' Pipfile --input-format toml --output-format csv 2>/dev/null || echo "")
