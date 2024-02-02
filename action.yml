@@ -8,6 +8,10 @@ inputs:
   python-version:
     description: The version of Python to use. Overrides the value in the Pipfile.
     required: false
+  working-directory:
+    description: The working directory to use. Defaults to the root of the repository.
+    required: false
+    default: "${{ github.workspace }}"
 outputs:
   python-version:
     description: The version of Python that was used
@@ -18,7 +22,7 @@ runs:
   steps:
     - id: detect-python
       name: Detect Python
-      run: detect-python.bash
+      run: detect-python.bash ${{ inputs.working-directory }} ${{ inputs.python-version }}
       shell: bash
     - id: setup-python
       name: Setup Python
@@ -36,3 +40,4 @@ runs:
       name: Sync Pipfile
       run: pipenv sync --dev --python ${{ steps.detect-python.outputs.python-version }}
       shell: bash
+      working-directory: ${{ inputs.working-directory }}

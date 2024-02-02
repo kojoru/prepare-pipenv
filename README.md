@@ -12,6 +12,7 @@ Easily install Python, pipenv and Pipfile packages in your GitHub Action
 ## Inputs
 
 - `python-version`: The version of Python to install (optional)
+- `working-directory`: The directory to run pipenv in (optional)
 
 ## Usage
 
