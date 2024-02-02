@@ -1,3 +1,5 @@
+# Prepare Pipenv environment in a GitHub Action
+
 Easily install Python, pipenv and Pipfile packages in your GitHub Action
 
 ## Features
@@ -9,7 +11,7 @@ Easily install Python, pipenv and Pipfile packages in your GitHub Action
 
 ## Inputs
 
-* `python-version`: The version of Python to install
+- `python-version`: The version of Python to install (optional)
 
 ## Usage
 
@@ -24,9 +26,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Install Python, pipenv and Pipfile packages
-        uses: palewire/install-python-pipenv-pipfile@v3
-        with:
-          python-version: 3.9
+        uses: kojoru/prepare-pipenv@v1
 
       - name: Do my thing
         run: make
