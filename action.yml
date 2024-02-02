@@ -1,5 +1,5 @@
-name: Install Python, pipenv and Pipfile packages
-description: Install Python, pipenv and Pipfile packages
+name: Pipenv sync
+description: This action prepares a Python environment using Pipenv, including installation of the right python version and syncing the Pipfile.lock.
 
 inputs:
   python-version:
