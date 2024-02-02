@@ -22,7 +22,7 @@ runs:
   steps:
     - id: detect-python
       name: Detect Python
-      run: detect-python.bash ${{ inputs.working-directory }} ${{ inputs.python-version }}
+      run: ${{github.action_path}}/detect-python.bash "${{ inputs.working-directory }}" "${{ inputs.python-version }}"
       shell: bash
     - id: setup-python
       name: Setup Python
